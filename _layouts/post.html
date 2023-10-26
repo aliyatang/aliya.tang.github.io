@@ -1,0 +1,31 @@
+---
+layout: default
+---
+<style>
+  .post-meta {
+    margin-bottom: 10px; /* Adjust this value to control the spacing */
+  }
+</style>
+
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="post-meta post-meta-title">
+    <h1 class="post-title p-name" itemprop="name">{{ page.title }}</h1>
+  </div>
+  <div class="post-meta post-meta-date">
+    <p>
+      <time datetime="{{ page.date | date_to_xmlschema }}" class="dt-published" itemprop="datePublished">{{ page.date | date: "%B %d, %Y" }}</time>
+    </p>
+  </div>
+  <div class="post-meta post-meta-description">
+    <p>{{ page.description }}</p>
+  </div>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    {{ content }}
+  </div>
+
+  {%- if page.comments -%}
+    {%- include utterances.html -%}
+  {%- endif -%}
+  <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
+</article>
